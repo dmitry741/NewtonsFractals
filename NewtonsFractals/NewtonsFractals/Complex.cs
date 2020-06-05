@@ -18,5 +18,18 @@
             _re = re;
             _im = im;
         }
+
+        public double Re => _re;
+        public double Im => _im;
+
+        public static Complex operator +(Complex a, Complex b)
+        {
+            return new Complex(a.Re + b.Re, b.Im + b.Im);
+        }
+        
+        public static  Complex operator-(Complex a, Complex b)
+        {
+            return new Complex(a.Re - b.Re, b.Im - b.Im);
+        }
     }
 }
