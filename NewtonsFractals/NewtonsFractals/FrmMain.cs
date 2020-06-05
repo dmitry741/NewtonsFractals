@@ -1,28 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace NewtonsFractals
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
         }
-
+        
         #region memebers
 
         Bitmap _bitmap = null;
 
         #endregion
-
+        
         #region private
 
         void Render()
@@ -47,7 +41,7 @@ namespace NewtonsFractals
 
         #endregion
 
-        private void frmMain_Load(object sender, EventArgs e)
+        private void FrmMain_Load(object sender, EventArgs e)
         {
             pictureBox1.BackColor = Color.White;
             _bitmap = CreateBackground(pictureBox1.Width, pictureBox1.Height);
@@ -58,10 +52,9 @@ namespace NewtonsFractals
             _bitmap = CreateBackground(pictureBox1.Width, pictureBox1.Height);
         }
 
-        private void frmMain_Paint(object sender, PaintEventArgs e)
+        private void FrmMain_Paint(object sender, PaintEventArgs e)
         {
             Render();
         }
     }
 }
-
