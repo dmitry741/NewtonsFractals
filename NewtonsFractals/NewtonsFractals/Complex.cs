@@ -1,4 +1,6 @@
-﻿namespace NewtonsFractals
+﻿using System;
+
+namespace NewtonsFractals
 {
     /// <summary>
     /// Класс комплексных чисел
@@ -22,14 +24,27 @@
         public double Re => _re;
         public double Im => _im;
 
+        public double Module => Math.Sqrt(Re * Re + Im * Im);
+
         public static Complex operator +(Complex a, Complex b)
         {
             return new Complex(a.Re + b.Re, b.Im + b.Im);
         }
         
-        public static  Complex operator-(Complex a, Complex b)
+        public static Complex operator -(Complex a, Complex b)
         {
             return new Complex(a.Re - b.Re, b.Im - b.Im);
+        }
+
+        public static Complex operator *(Complex a, Complex b)
+        {
+            return new Complex(a.Re * b.Re - a.Im * b.Im, a.Im * b.Re + a.Re * b.Im);
+        }
+
+        public static Complex operator /(Complex a, Complex b)
+        {
+            double module2 = b.Re * b.Re + b.Im * b.Im;
+            return new Complex((a.Re * b.Re + a.Im * b.Im) / module2, (a.Im * b.Re - a.Re * b.Im) / module2);
         }
     }
 }
