@@ -7,22 +7,20 @@ namespace NewtonsFractals
     /// </summary>
     public class Complex
     {
-        private double _re;
-        private double _im;
-
         public Complex()
         {
-            _re = _im = 0;
+            Re = Im = 0;
         }
 
         public Complex(double re, double im)
         {
-            _re = re;
-            _im = im;
+            Re = re;
+            Im = im;
         }
 
-        public double Re => _re;
-        public double Im => _im;
+        public double Re { get; private set; }
+
+        public double Im { get; private set; }
 
         public double Module => Math.Sqrt(Re * Re + Im * Im);
 
