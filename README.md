@@ -1,3 +1,3 @@
 # NewtonsFractals
-Newton's and Mandelbrot's Fractals
-Simple realization of Newton's and Mandelbrot's Fractals.
+Julia's Newton's and Mandelbrot's Fractals
+Simple realization of Julia's, Newton's and Mandelbrot's F\fractals.
