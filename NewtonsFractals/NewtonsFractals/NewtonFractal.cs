@@ -1,25 +1,37 @@
-﻿namespace NewtonsFractals
+﻿using System;
+using System.Linq;
+
+namespace NewtonsFractals
 {
     public class NewtonFractal : AbstractDynamicFractal
     {
-        private int _k;
+        private  readonly int _n;
+        private readonly Complex[] _roots;
 
-        public NewtonFractal(int k)
+        public NewtonFractal(int n)
         {
-            _k = k;
+            _n = n;
+            _roots = new Complex[_n];
+            
+            double angle = 2 * Math.PI / _n;
+
+            for (int i = 0; i < _n; i++)
+            {
+                _roots[i] = new Complex(Math.Cos(angle * i), Math.Sin(angle * i));
+            }
         }
 
         public override Complex Iteration(Complex z)
         {
-            Complex numerator = (_k - 1) * z^_k + 1;
-            Complex denominator = _k * (z^(_k - 1));
+            Complex numerator = (_n - 1) * z^_n + 1;
+            Complex denominator = _n * (z^(_n - 1));
 
             return numerator / denominator;
         }
 
         public override bool Check(Complex z)
         {
-            throw new System.NotImplementedException();
+            return _roots.Any(x => (x-z).ModuleInSquare < 0.01);
         }
     }
 }

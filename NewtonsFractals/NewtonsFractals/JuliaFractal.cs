@@ -2,7 +2,7 @@
 {
     public class JuliaFractal : AbstractDynamicFractal
     {
-        private Complex _c;
+        private readonly Complex _c;
         
         public JuliaFractal(Complex c)
         {
