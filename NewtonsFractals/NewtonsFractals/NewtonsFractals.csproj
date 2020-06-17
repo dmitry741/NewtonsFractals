@@ -54,6 +54,8 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="JuliaFractal.cs" />
+    <Compile Include="MandelbrotFractal.cs" />
+    <Compile Include="NewtonFractal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
