@@ -23,6 +23,7 @@ namespace NewtonsFractals
         public double Im { get; private set; }
 
         public double Module => Math.Sqrt(Re * Re + Im * Im);
+        public double ModuleInSquare => Re * Re + Im * Im;
 
         public static Complex operator +(Complex a, Complex b)
         {

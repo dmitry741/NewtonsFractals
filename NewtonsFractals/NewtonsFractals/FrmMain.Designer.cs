@@ -45,12 +45,12 @@ namespace NewtonsFractals
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 215);
+            this.ClientSize = new System.Drawing.Size(399, 215);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmMain";
-            this.Text = "FrmMain";
+            this.Text = "Фрактлы Жулиа, Мандельброта, Ньютона";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmMain_Paint);
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
