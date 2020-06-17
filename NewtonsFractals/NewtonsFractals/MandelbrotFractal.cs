@@ -2,12 +2,12 @@
 {
     public class MandelbrotFractal : AbstractDynamicFractal
     {
-        public override Complex Iteration(Complex z)
+        protected override Complex Iteration(Complex z)
         {
             return z * z + Start;
         }
 
-        public override bool Check(Complex z)
+        protected override bool Check(Complex z)
         {
             return z.ModuleInSquare > 16.0;
         }

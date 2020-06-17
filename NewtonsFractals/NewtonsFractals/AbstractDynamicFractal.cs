@@ -9,8 +9,8 @@ namespace NewtonsFractals
         
         #region === abstarct ===
         
-        public abstract Complex Iteration(Complex z);
-        public abstract bool Check(Complex z);
+        protected abstract Complex Iteration(Complex z);
+        protected abstract bool Check(Complex z);
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace NewtonsFractals
             {
                 Complex z2 = Iteration(z1);
 
-                if (Check(z1))
+                if (Check(z2))
                 {
                     index = i;
                     break;

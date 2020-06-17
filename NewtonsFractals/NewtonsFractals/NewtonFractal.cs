@@ -21,7 +21,7 @@ namespace NewtonsFractals
             }
         }
 
-        public override Complex Iteration(Complex z)
+        protected override Complex Iteration(Complex z)
         {
             Complex numerator = (_n - 1) * z^_n + 1;
             Complex denominator = _n * (z^(_n - 1));
@@ -29,7 +29,7 @@ namespace NewtonsFractals
             return numerator / denominator;
         }
 
-        public override bool Check(Complex z)
+        protected override bool Check(Complex z)
         {
             return _roots.Any(x => (x-z).ModuleInSquare < 0.01);
         }

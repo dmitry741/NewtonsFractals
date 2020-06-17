@@ -9,12 +9,12 @@
             _c = c;
         }
 
-        public override Complex Iteration(Complex z)
+        protected override Complex Iteration(Complex z)
         {
             return z * z + _c;
         }
 
-        public override bool Check(Complex z)
+        protected override bool Check(Complex z)
         {
             return z.ModuleInSquare > 16.0;
         }

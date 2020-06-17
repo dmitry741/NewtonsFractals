@@ -52,8 +52,8 @@ namespace NewtonsFractals
 
         public static Complex operator /(Complex a, Complex b)
         {
-            double module2 = b.Re * b.Re + b.Im * b.Im;
-            return new Complex((a.Re * b.Re + a.Im * b.Im) / module2, (a.Im * b.Re - a.Re * b.Im) / module2);
+            double m2 = b.ModuleInSquare;
+            return new Complex((a.Re * b.Re + a.Im * b.Im) / m2, (a.Im * b.Re - a.Re * b.Im) / m2);
         }
         
         public static Complex operator ^(Complex a, int power)
