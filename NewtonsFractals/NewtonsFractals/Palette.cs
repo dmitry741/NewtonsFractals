@@ -6,8 +6,8 @@ namespace NewtonsFractals
 {
     public class Palette
     {
-        private List<Color> _baseColors;
-        private List<Color> _palette;
+        private readonly List<Color> _baseColors = new List<Color>();
+        private readonly List<Color> _palette = new List<Color>();
 
         #region === private ===
         

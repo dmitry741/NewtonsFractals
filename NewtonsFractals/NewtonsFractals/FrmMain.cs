@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -14,10 +15,56 @@ namespace NewtonsFractals
         #region memebers
 
         Bitmap _bitmap = null;
+        List<Palette> _palettes = new List<Palette>();
+        private Palette _colors = null;
 
         #endregion
         
         #region private
+
+        Palette CreateHotPalette()
+        {
+            Palette palette = new Palette();
+            
+            palette.AddBaseColor(Color.FromArgb(255, 0, 0));
+            palette.AddBaseColor(Color.FromArgb(255, 255, 0));
+            palette.AddBaseColor(Color.FromArgb(128, 128, 0));
+            palette.AddBaseColor(Color.FromArgb(0, 128, 0));
+            
+            palette.AddBaseColor(Color.FromArgb(0, 255, 0));
+            palette.AddBaseColor(Color.FromArgb(0, 255, 255));
+            palette.AddBaseColor(Color.FromArgb(0, 0, 192));
+            palette.AddBaseColor(Color.FromArgb(0, 0, 128));
+            
+            palette.CreatePalette();
+
+            return palette;
+        }
+        
+        Palette CreateColdPalette()
+        {
+            Palette palette = new Palette();
+            
+            palette.AddBaseColor(Color.FromArgb(0, 0, 128));
+            palette.AddBaseColor(Color.FromArgb(0, 0, 192));
+            palette.AddBaseColor(Color.FromArgb(0, 255, 255));
+            palette.AddBaseColor(Color.FromArgb(0, 255, 0));
+            
+            palette.AddBaseColor(Color.FromArgb(0, 128, 0));
+            palette.AddBaseColor(Color.FromArgb(128, 128, 0));
+            palette.AddBaseColor(Color.FromArgb(255, 255, 0));
+            palette.AddBaseColor(Color.FromArgb(255, 0, 0));
+            
+            palette.CreatePalette();
+
+            return palette;
+        }
+
+        void CreatePalettes()
+        {
+            _palettes.Add(CreateHotPalette());
+            _palettes.Add(CreateColdPalette());
+        }
 
         void Render()
         {
@@ -45,6 +92,8 @@ namespace NewtonsFractals
         {
             pictureBox1.BackColor = Color.White;
             _bitmap = CreateBackground(pictureBox1.Width, pictureBox1.Height);
+            CreatePalettes();
+            _colors = _palettes[0];
         }
 
         private void pictureBox1_SizeChanged(object sender, EventArgs e)
