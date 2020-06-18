@@ -31,7 +31,7 @@ namespace NewtonsFractals
 
         protected override bool Check(Complex z)
         {
-            return _roots.Any(x => (x-z).ModuleInSquare < 0.01);
+            return _roots.Any(x => (x - z).ModuleInSquare < 0.01);
         }
     }
 }
