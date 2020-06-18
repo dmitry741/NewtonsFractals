@@ -9,7 +9,7 @@
             _c = c;
         }
 
-        protected override Complex Iteration(Complex z)
+        protected override Complex NextIteration(Complex z)
         {
             return z * z + _c;
         }

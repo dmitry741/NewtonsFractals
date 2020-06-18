@@ -2,7 +2,7 @@
 {
     public class MandelbrotFractal : AbstractDynamicFractal
     {
-        protected override Complex Iteration(Complex z)
+        protected override Complex NextIteration(Complex z)
         {
             return z * z + Start;
         }

@@ -4,12 +4,12 @@ namespace NewtonsFractals
 {
     public abstract class AbstractDynamicFractal
     {
-        public int IterationCount { get; set; }
+        public int MaxIterationCount { get; set; }
         public Complex Start { get; set; }
         
         #region === abstarct ===
         
-        protected abstract Complex Iteration(Complex z);
+        protected abstract Complex NextIteration(Complex z);
         protected abstract bool Check(Complex z);
 
         #endregion
@@ -19,9 +19,9 @@ namespace NewtonsFractals
             Complex z1 = Start;
             int index = -1;
 
-            for (int i = 0; i < IterationCount; i++)
+            for (int i = 0; i < MaxIterationCount; i++)
             {
-                Complex z2 = Iteration(z1);
+                Complex z2 = NextIteration(z1);
 
                 if (Check(z2))
                 {
