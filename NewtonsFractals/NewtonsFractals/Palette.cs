@@ -16,14 +16,14 @@ namespace NewtonsFractals
         
         void CreatePalette()
         {
-            const int c_gradientCount = 8;
+            const int cGradientCount = 8;
             _palette.Clear();
 
             for (int i = 0; i < _baseColors.Count - 1; i++)
             {
-                for (int j = 0; j < c_gradientCount; j++)
+                for (int j = 0; j < cGradientCount; j++)
                 {
-                    _palette.Add(GetGradientColor(j, _baseColors[i], _baseColors[i + 1], c_gradientCount));
+                    _palette.Add(GetGradientColor(j, _baseColors[i], _baseColors[i + 1], cGradientCount));
                 }
             }
 
