@@ -9,28 +9,9 @@ namespace NewtonsFractals
         private List<Color> _baseColors;
         private List<Color> _palette;
 
-        public void AddBaseColor(Color color)
-        {
-            _baseColors.Add(color);
-        }
+        #region === private ===
         
-        void CreatePalette()
-        {
-            const int cGradientCount = 8;
-            _palette.Clear();
-
-            for (int i = 0; i < _baseColors.Count - 1; i++)
-            {
-                for (int j = 0; j < cGradientCount; j++)
-                {
-                    _palette.Add(GetGradientColor(j, _baseColors[i], _baseColors[i + 1], cGradientCount));
-                }
-            }
-
-            _palette.Add( _baseColors[_baseColors.Count - 1] );
-        }
-        
-        Color GetGradientColor(int iteration, Color color1, Color color2, int gradientCount)
+        static Color GetGradientColor(int iteration, Color color1, Color color2, int gradientCount)
         {
             double r1 = color1.R;
             double g1 = color1.G;
@@ -47,6 +28,29 @@ namespace NewtonsFractals
             double b = k * (b2 - b1) + b1;
 
             return Color.FromArgb(Convert.ToInt32(r), Convert.ToInt32(g), Convert.ToInt32(b));
-        }                
+        }  
+        
+        #endregion
+        
+        public void CreatePalette()
+        {
+            const int cGradientCount = 8;
+            _palette.Clear();
+
+            for (int i = 0; i < _baseColors.Count - 1; i++)
+            {
+                for (int j = 0; j < cGradientCount; j++)
+                {
+                    _palette.Add(GetGradientColor(j, _baseColors[i], _baseColors[i + 1], cGradientCount));
+                }
+            }
+
+            _palette.Add(_baseColors[_baseColors.Count - 1]);
+        }
+        
+        public void AddBaseColor(Color color)
+        {
+            _baseColors.Add(color);
+        }
     }
 }
