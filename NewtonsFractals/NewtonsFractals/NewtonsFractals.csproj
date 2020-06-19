@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AbstractDynamicFractal.cs" />
     <Compile Include="Complex.cs" />
+    <Compile Include="FractalBitmap.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
