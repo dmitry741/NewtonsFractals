@@ -6,19 +6,8 @@ namespace NewtonsFractals
 {
     public class FractalBitmap
     {
-        public FractalBitmap(int width, int height)
-        {
-            _bitmapWidth = width;
-            _bitmapHeight = height;
-        }
-
-        #region === members ===
-        
-        private readonly int _bitmapWidth;
-        private readonly int _bitmapHeight;
-        
-        #endregion
-        
+        public int BitmapWidth { get; set; }
+        public int BitmapHeight { get; set; }
         public double Xmin { get; set; }
         public double Xmax { get; set; }
         public double Ymin { get; set; }
@@ -29,14 +18,14 @@ namespace NewtonsFractals
             fractal.MaxIterationCount = colors.Count;
             Array.Clear(rgbValues, 0, rgbValues.Length);
             
-            double kx = (Xmax - Xmin) / (_bitmapWidth - 1);
-            double ky = (Ymin - Ymax) / (_bitmapHeight - 1);
+            double kx = (Xmax - Xmin) / (BitmapWidth - 1);
+            double ky = (Ymin - Ymax) / (BitmapHeight - 1);
 
-            for (int x = 0; x < _bitmapWidth; x++)
+            for (int x = 0; x < BitmapWidth; x++)
             {
                 double re = kx * x + Xmin;
                 
-                for (int y = 0; y < _bitmapHeight; y++)
+                for (int y = 0; y < BitmapHeight; y++)
                 {
                     double im = ky * y + Ymax;
                     fractal.Start = new Complex(re, im);
