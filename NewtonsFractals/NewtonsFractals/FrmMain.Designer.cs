@@ -28,11 +28,16 @@ namespace NewtonsFractals
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblYmax = new System.Windows.Forms.Label();
             this.lblYmin = new System.Windows.Forms.Label();
             this.lblXmin = new System.Windows.Forms.Label();
             this.lblXmax = new System.Windows.Forms.Label();
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +81,58 @@ namespace NewtonsFractals
             this.lblXmax.TabIndex = 4;
             this.lblXmax.Text = "label4";
             // 
+            // btnLeft
+            // 
+            this.btnLeft.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnLeft.BackgroundImage")));
+            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLeft.Location = new System.Drawing.Point(673, 314);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(36, 36);
+            this.btnLeft.TabIndex = 5;
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnUp.BackgroundImage")));
+            this.btnUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnUp.Location = new System.Drawing.Point(715, 314);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(36, 36);
+            this.btnUp.TabIndex = 6;
+            this.btnUp.UseVisualStyleBackColor = true;
+            // 
+            // btnRight
+            // 
+            this.btnRight.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnRight.BackgroundImage")));
+            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRight.Location = new System.Drawing.Point(799, 314);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(36, 36);
+            this.btnRight.TabIndex = 7;
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnDown.BackgroundImage")));
+            this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDown.Location = new System.Drawing.Point(757, 314);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(36, 36);
+            this.btnDown.TabIndex = 8;
+            this.btnDown.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(876, 685);
+            this.Controls.Add(this.btnDown);
+            this.Controls.Add(this.btnRight);
+            this.Controls.Add(this.btnUp);
+            this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.lblXmax);
             this.Controls.Add(this.lblXmin);
             this.Controls.Add(this.lblYmin);
@@ -95,6 +147,10 @@ namespace NewtonsFractals
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Button btnLeft;
+        private System.Windows.Forms.Button btnRight;
+        private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Label lblXmax;
         private System.Windows.Forms.Label lblXmin;
         private System.Windows.Forms.Label lblYmax;

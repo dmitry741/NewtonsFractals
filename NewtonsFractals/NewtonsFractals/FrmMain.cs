@@ -19,6 +19,8 @@ namespace NewtonsFractals
         readonly List<Palette> _palettes = new List<Palette>();
         private Palette _colors = null;
 
+        private const double cStep = 10;
+
         private const double cXmin = -1.5;
         private const double cXmax = 1.5;
         private const double cYmin = -1.5;
@@ -112,6 +114,16 @@ namespace NewtonsFractals
             return _bitmap;
         }
 
+        void UpdateEdges()
+        {
+            const int cSigns = 2;
+
+            lblXmin.Text = Math.Round(_xmin, cSigns).ToString();
+            lblXmax.Text = Math.Round(_xmax, cSigns).ToString();
+            lblYmin.Text = Math.Round(_ymin, cSigns).ToString();
+            lblYmax.Text = Math.Round(_ymax, cSigns).ToString();
+        }
+
         #endregion
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -131,6 +143,27 @@ namespace NewtonsFractals
             _colors = _palettes[0];
 
             pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            double s = (_xmax - _xmin) / cStep;
+            _xmax -= s;
+            _xmin -= s;
+            
+            pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            double s = (_xmax - _xmin) / cStep;
+            _xmax += s;
+            _xmin += s;
+            
+            pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
         }
     }
 }
