@@ -21,15 +21,17 @@ namespace NewtonsFractals
 
         private const double cStep = 10;
 
-        private const double cXmin = -1.5;
-        private const double cXmax = 1.5;
-        private const double cYmin = -1.5;
-        private const double cYmax = 1.5;
+        private const double cXmin = -1.75;
+        private const double cXmax = 1.75;
+        private const double cYmin = -1.75;
+        private const double cYmax = 1.75;
         
         private double _xmin = cXmin;
         private double _xmax = cXmax;
         private double _ymin = cYmin;
         private double _ymax = cYmax;
+
+        private bool _blockEventHandler = false;
 
         #endregion
         
@@ -102,11 +104,7 @@ namespace NewtonsFractals
                 Ymax = _ymax
             };
             
-            AbstractDynamicFractal fractal = new JuliaFractal(new Complex(-0.22, -0.74));
-            //AbstractDynamicFractal fractal = new MandelbrotFractal();
-            //AbstractDynamicFractal fractal = new NewtonFractal(5);
-
-            fbi.GetBitmap(fractal, _colors.Colors, stride, _rgbValues);
+            fbi.GetBitmap(Fractal, _colors.Colors, stride, _rgbValues);
 
             System.Runtime.InteropServices.Marshal.Copy(_rgbValues, 0, bmpData.Scan0, bytes);
             _bitmap.UnlockBits(bmpData);
@@ -122,6 +120,23 @@ namespace NewtonsFractals
             lblXmax.Text = Math.Round(_xmax, cSigns).ToString();
             lblYmin.Text = Math.Round(_ymin, cSigns).ToString();
             lblYmax.Text = Math.Round(_ymax, cSigns).ToString();
+        }
+
+        AbstractDynamicFractal Fractal
+        {
+            get
+            {
+                AbstractDynamicFractal fractal = null;
+                
+                if (cmbFractal.SelectedIndex == 0)
+                    fractal = new JuliaFractal(new Complex(-0.22, -0.74));
+                else if (cmbFractal.SelectedIndex == 1)
+                    fractal = new MandelbrotFractal();
+                else
+                    fractal = new NewtonFractal(3);
+
+                return fractal;
+            }
         }
 
         #endregion
@@ -140,8 +155,21 @@ namespace NewtonsFractals
             }
             
             CreatePalettes();
-            _colors = _palettes[0];
 
+            _blockEventHandler = true;
+            
+            cmbPalette.Items.Add("Синяя");
+            cmbPalette.Items.Add("Оранжевая");
+            cmbPalette.SelectedIndex = 0;
+
+            cmbFractal.Items.Add("Жулиа");
+            cmbFractal.Items.Add("Мандельброт");
+            cmbFractal.Items.Add("Ньютон");
+            cmbFractal.SelectedIndex = 0;
+
+            _blockEventHandler = false;
+
+            _colors = _palettes[0];
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
         }
@@ -164,6 +192,54 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            double s = (_ymax - _ymin) / cStep;
+            _ymax += s;
+            _ymin += s;
+            
+            pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            double s = (_ymax - _ymin) / cStep;
+            _ymax -= s;
+            _ymin -= s;
+            
+            pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _xmin = cXmin;
+            _xmax = cXmax;
+            _ymin = cYmin;
+            _ymax = cYmax;
+            
+            pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
+        }
+
+        private void cmbPalette_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_blockEventHandler)
+                return;
+            
+            _colors = _palettes[cmbPalette.SelectedIndex];
+            pictureBox1.Image = UpdateBitmap();
+        }
+
+        private void cmbFractal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_blockEventHandler)
+                return;
+
+            pictureBox1.Image = UpdateBitmap();
         }
     }
 }

@@ -7,22 +7,30 @@ namespace NewtonsFractals
     /// </summary>
     public class Complex
     {
-        public Complex()
-        {
-            Re = Im = 0;
-        }
-
         public Complex(double re, double im)
         {
             Re = re;
             Im = im;
         }
 
+        /// <summary>
+        /// Реальная часть комплексного числа.
+        /// </summary>
         public double Re { get; private set; }
 
+        /// <summary>
+        /// Мнимая часть комплекстного числа.
+        /// </summary>
         public double Im { get; private set; }
 
+        /// <summary>
+        /// Модуль комплексного числа.
+        /// </summary>
         public double Module => Math.Sqrt(Re * Re + Im * Im);
+        
+        /// <summary>
+        /// Квадрат модуля комплексного числа.
+        /// </summary>
         public double ModuleInSquare => Re * Re + Im * Im;
 
         public static Complex operator +(Complex a, Complex b)

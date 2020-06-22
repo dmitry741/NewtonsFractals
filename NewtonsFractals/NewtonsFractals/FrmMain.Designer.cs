@@ -38,6 +38,11 @@ namespace NewtonsFractals
             this.btnUp = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cmbFractal = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbPalette = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +90,7 @@ namespace NewtonsFractals
             // 
             this.btnLeft.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnLeft.BackgroundImage")));
             this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnLeft.Location = new System.Drawing.Point(673, 314);
+            this.btnLeft.Location = new System.Drawing.Point(717, 310);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(36, 36);
             this.btnLeft.TabIndex = 5;
@@ -96,17 +101,18 @@ namespace NewtonsFractals
             // 
             this.btnUp.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnUp.BackgroundImage")));
             this.btnUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnUp.Location = new System.Drawing.Point(715, 314);
+            this.btnUp.Location = new System.Drawing.Point(759, 310);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(36, 36);
             this.btnUp.TabIndex = 6;
             this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // btnRight
             // 
             this.btnRight.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnRight.BackgroundImage")));
             this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRight.Location = new System.Drawing.Point(799, 314);
+            this.btnRight.Location = new System.Drawing.Point(843, 310);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(36, 36);
             this.btnRight.TabIndex = 7;
@@ -117,18 +123,70 @@ namespace NewtonsFractals
             // 
             this.btnDown.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnDown.BackgroundImage")));
             this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDown.Location = new System.Drawing.Point(757, 314);
+            this.btnDown.Location = new System.Drawing.Point(801, 310);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(36, 36);
             this.btnDown.TabIndex = 8;
             this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(717, 352);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 31);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Исходное положение";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cmbFractal
+            // 
+            this.cmbFractal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFractal.FormattingEnabled = true;
+            this.cmbFractal.Location = new System.Drawing.Point(751, 99);
+            this.cmbFractal.Name = "cmbFractal";
+            this.cmbFractal.Size = new System.Drawing.Size(128, 21);
+            this.cmbFractal.TabIndex = 10;
+            this.cmbFractal.SelectedIndexChanged += new System.EventHandler(this.cmbFractal_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(757, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 19);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Палитра";
+            // 
+            // cmbPalette
+            // 
+            this.cmbPalette.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPalette.FormattingEnabled = true;
+            this.cmbPalette.Location = new System.Drawing.Point(751, 34);
+            this.cmbPalette.Name = "cmbPalette";
+            this.cmbPalette.Size = new System.Drawing.Size(128, 21);
+            this.cmbPalette.TabIndex = 13;
+            this.cmbPalette.SelectedIndexChanged += new System.EventHandler(this.cmbPalette_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(751, 77);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 19);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Фрактал";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(876, 685);
+            this.ClientSize = new System.Drawing.Size(891, 685);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbPalette);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbFractal);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDown);
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.btnUp);
@@ -151,6 +209,11 @@ namespace NewtonsFractals
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cmbFractal;
+        private System.Windows.Forms.ComboBox cmbPalette;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblXmax;
         private System.Windows.Forms.Label lblXmin;
         private System.Windows.Forms.Label lblYmax;
