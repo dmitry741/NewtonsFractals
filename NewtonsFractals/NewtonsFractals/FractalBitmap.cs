@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace NewtonsFractals
@@ -23,28 +24,33 @@ namespace NewtonsFractals
         public double Ymin { get; set; }
         public double Ymax { get; set; }
 
-        public byte[] GetBitmap(AbstractDynamicFractal fractal, List<Color> colors)
+        public void GetBitmap(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
             fractal.MaxIterationCount = colors.Count;
+            Array.Clear(rgbValues, 0, rgbValues.Length);
             
             double kx = (Xmax - Xmin) / (_bitmapWidth - 1);
             double ky = (Ymin - Ymax) / (_bitmapHeight - 1);
-            double re, im;
 
-            for (int i = 0; i < _bitmapWidth; i++)
+            for (int x = 0; x < _bitmapWidth; x++)
             {
-                re = kx * i + Xmin;
+                double re = kx * x + Xmin;
                 
-                for (int j = 0; j < _bitmapHeight; j++)
+                for (int y = 0; y < _bitmapHeight; y++)
                 {
-                    im = ky * j + Ymax;
+                    double im = ky * y + Ymax;
                     fractal.Start = new Complex(re, im);
+                    
                     int index = fractal.GetIteration();
                     
-                    // TODO:
+                    if (index < 0)
+                        continue;
+                   
+                    rgbValues[y * stride + x * 3 + 0] = colors[index].B;
+                    rgbValues[y * stride + x * 3 + 1] = colors[index].G;
+                    rgbValues[y * stride + x * 3 + 2] = colors[index].R;
                 }
             }
-            return default;
         }
     }
 }

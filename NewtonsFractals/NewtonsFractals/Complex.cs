@@ -27,7 +27,7 @@ namespace NewtonsFractals
 
         public static Complex operator +(Complex a, Complex b)
         {
-            return new Complex(a.Re + b.Re, b.Im + b.Im);
+            return new Complex(a.Re + b.Re, a.Im + b.Im);
         }
         
         public static Complex operator +(Complex a, double b)
@@ -37,7 +37,7 @@ namespace NewtonsFractals
         
         public static Complex operator -(Complex a, Complex b)
         {
-            return new Complex(a.Re - b.Re, b.Im - b.Im);
+            return new Complex(a.Re - b.Re, a.Im - b.Im);
         }
 
         public static Complex operator *(Complex a, Complex b)

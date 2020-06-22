@@ -52,5 +52,7 @@ namespace NewtonsFractals
         {
             _baseColors.Add(color);
         }
+
+        public List<Color> Colors => _palette;
     }
 }

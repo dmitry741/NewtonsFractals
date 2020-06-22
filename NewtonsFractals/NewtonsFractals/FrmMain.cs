@@ -71,12 +71,32 @@ namespace NewtonsFractals
             if (_bitmap == null)
                 return;
 
-            Graphics g = Graphics.FromImage(_bitmap);
-            g.Clear(Color.White);
+            //Graphics g = Graphics.FromImage(_bitmap);
+            //g.Clear(Color.White);
 
-            g.DrawString("All ok", new Font("Arial", 24f, FontStyle.Regular), Brushes.Black, new Point(20, 20));
+            Rectangle rect = new Rectangle(0, 0, _bitmap.Width, _bitmap.Height);
+            System.Drawing.Imaging.BitmapData bmpData = _bitmap.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
-            // TODO:
+            int stride = bmpData.Stride;
+            int bytes = Math.Abs(stride) * _bitmap.Height;
+            byte[] rgbValues = new byte[bytes];
+
+            FractalBitmap fbi = new FractalBitmap(_bitmap.Width, _bitmap.Height)
+            {
+                Xmin = -1.5,
+                Xmax = 1.5,
+                Ymin = -1.5,
+                Ymax = 1.5
+            };
+            
+            AbstractDynamicFractal fractal = new JuliaFractal(new Complex(-0.22, -0.74));
+            //AbstractDynamicFractal fractal = new MandelbrotFractal();
+            //AbstractDynamicFractal fractal = new NewtonFractal(3);
+
+            fbi.GetBitmap(fractal, _colors.Colors, stride, rgbValues);
+
+            System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, bmpData.Scan0, bytes);
+            _bitmap.UnlockBits(bmpData);
 
             pictureBox1.Image = _bitmap;
         }
@@ -93,7 +113,7 @@ namespace NewtonsFractals
             pictureBox1.BackColor = Color.White;
             _bitmap = CreateBackground(pictureBox1.Width, pictureBox1.Height);
             CreatePalettes();
-            _colors = _palettes[0];
+            _colors = _palettes[1];
         }
 
         private void pictureBox1_SizeChanged(object sender, EventArgs e)
@@ -104,6 +124,11 @@ namespace NewtonsFractals
         private void FrmMain_Paint(object sender, PaintEventArgs e)
         {
             Render();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
