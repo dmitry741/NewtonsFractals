@@ -47,8 +47,15 @@ namespace NewtonsFractals
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblB = new System.Windows.Forms.Label();
+            this.lblA = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -219,12 +226,52 @@ namespace NewtonsFractals
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblB);
+            this.groupBox2.Controls.Add(this.lblA);
+            this.groupBox2.Controls.Add(this.trackBar2);
+            this.groupBox2.Controls.Add(this.trackBar1);
             this.groupBox2.Location = new System.Drawing.Point(678, 125);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(201, 116);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Жулиа";
+            // 
+            // lblB
+            // 
+            this.lblB.Location = new System.Drawing.Point(6, 65);
+            this.lblB.Name = "lblB";
+            this.lblB.Size = new System.Drawing.Size(40, 23);
+            this.lblB.TabIndex = 3;
+            this.lblB.Text = "b=";
+            // 
+            // lblA
+            // 
+            this.lblA.Location = new System.Drawing.Point(6, 19);
+            this.lblA.Name = "lblA";
+            this.lblA.Size = new System.Drawing.Size(57, 23);
+            this.lblA.TabIndex = 2;
+            this.lblA.Text = "a=";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(60, 65);
+            this.trackBar2.Maximum = 20;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(135, 45);
+            this.trackBar2.TabIndex = 1;
+            this.trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
+            this.trackBar2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseUp);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(60, 19);
+            this.trackBar1.Maximum = 20;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(135, 45);
+            this.trackBar1.TabIndex = 0;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseUp);
             // 
             // FrmMain
             // 
@@ -250,6 +297,10 @@ namespace NewtonsFractals
             this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.trackBar1)).EndInit();
             this.ResumeLayout(false);
         }
 
@@ -266,11 +317,15 @@ namespace NewtonsFractals
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblA;
+        private System.Windows.Forms.Label lblB;
         private System.Windows.Forms.Label lblXmax;
         private System.Windows.Forms.Label lblXmin;
         private System.Windows.Forms.Label lblYmax;
         private System.Windows.Forms.Label lblYmin;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar2;
 
         #endregion
     }

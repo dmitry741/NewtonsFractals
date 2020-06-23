@@ -128,13 +128,22 @@ namespace NewtonsFractals
             get
             {
                 AbstractDynamicFractal fractal = null;
-                
+
                 if (cmbFractal.SelectedIndex == 0)
-                    fractal = new JuliaFractal(new Complex(-0.22, -0.74));
+                {
+                    var a = 2.0 / (trackBar1.Maximum - trackBar1.Minimum) * (trackBar1.Value - trackBar1.Minimum) - 1;
+                    var b = 2.0 / (trackBar2.Maximum - trackBar2.Minimum) * (trackBar2.Value - trackBar2.Minimum) - 1;
+
+                    fractal = new JuliaFractal(new Complex(a, b));
+                }
                 else if (cmbFractal.SelectedIndex == 1)
+                {
                     fractal = new MandelbrotFractal();
+                }
                 else
+                {
                     fractal = new NewtonFractal(3);
+                }
 
                 return fractal;
             }
@@ -169,6 +178,15 @@ namespace NewtonsFractals
             cmbFractal.SelectedIndex = 0;
 
             _blockEventHandler = false;
+
+            double a = -0.2;
+            double b = -0.7;
+
+            trackBar1.Value = Convert.ToInt32((trackBar1.Maximum - trackBar1.Minimum) / 2.0 * (a + 1) + trackBar1.Minimum);
+            trackBar2.Value = Convert.ToInt32((trackBar1.Maximum - trackBar1.Minimum) / 2.0 * (b + 1) + trackBar1.Minimum);
+
+            lblA.Text = string.Format("a={0}", Math.Round(a, 2));
+            lblB.Text = string.Format("b={0}", Math.Round(b, 2));
 
             _colors = _palettes[0];
             pictureBox1.Image = UpdateBitmap();
@@ -320,6 +338,26 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            double a = 2.0 / (trackBar1.Maximum - trackBar1.Minimum) * (trackBar1.Value - trackBar1.Minimum) - 1; 
+            lblA.Text = string.Format("a={0}", Math.Round(a, 2));
+        }
+        
+        private void trackBar2_ValueChanged(object sender, EventArgs e)
+        {
+            double b = 2.0 / (trackBar2.Maximum - trackBar2.Minimum) * (trackBar2.Value - trackBar2.Minimum) - 1; 
+            lblB.Text = string.Format("b={0}", Math.Round(b, 2));
+        }
+
+        private void trackBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                pictureBox1.Image = UpdateBitmap();
+            }
         }
     }
 }
