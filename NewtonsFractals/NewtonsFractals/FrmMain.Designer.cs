@@ -43,7 +43,12 @@ namespace NewtonsFractals
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPalette = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnZoomIn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnZoomOut = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -90,7 +95,7 @@ namespace NewtonsFractals
             // 
             this.btnLeft.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnLeft.BackgroundImage")));
             this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnLeft.Location = new System.Drawing.Point(717, 310);
+            this.btnLeft.Location = new System.Drawing.Point(25, 56);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(36, 36);
             this.btnLeft.TabIndex = 5;
@@ -101,7 +106,7 @@ namespace NewtonsFractals
             // 
             this.btnUp.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnUp.BackgroundImage")));
             this.btnUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnUp.Location = new System.Drawing.Point(759, 310);
+            this.btnUp.Location = new System.Drawing.Point(67, 56);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(36, 36);
             this.btnUp.TabIndex = 6;
@@ -112,7 +117,7 @@ namespace NewtonsFractals
             // 
             this.btnRight.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnRight.BackgroundImage")));
             this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRight.Location = new System.Drawing.Point(843, 310);
+            this.btnRight.Location = new System.Drawing.Point(151, 56);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(36, 36);
             this.btnRight.TabIndex = 7;
@@ -123,7 +128,7 @@ namespace NewtonsFractals
             // 
             this.btnDown.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("btnDown.BackgroundImage")));
             this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDown.Location = new System.Drawing.Point(801, 310);
+            this.btnDown.Location = new System.Drawing.Point(109, 56);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(36, 36);
             this.btnDown.TabIndex = 8;
@@ -132,7 +137,7 @@ namespace NewtonsFractals
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(717, 352);
+            this.button1.Location = new System.Drawing.Point(25, 98);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 31);
             this.button1.TabIndex = 9;
@@ -144,7 +149,7 @@ namespace NewtonsFractals
             // 
             this.cmbFractal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFractal.FormattingEnabled = true;
-            this.cmbFractal.Location = new System.Drawing.Point(751, 99);
+            this.cmbFractal.Location = new System.Drawing.Point(751, 98);
             this.cmbFractal.Name = "cmbFractal";
             this.cmbFractal.Size = new System.Drawing.Size(128, 21);
             this.cmbFractal.TabIndex = 10;
@@ -152,7 +157,7 @@ namespace NewtonsFractals
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(757, 12);
+            this.label2.Location = new System.Drawing.Point(673, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 19);
             this.label2.TabIndex = 12;
@@ -162,7 +167,7 @@ namespace NewtonsFractals
             // 
             this.cmbPalette.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPalette.FormattingEnabled = true;
-            this.cmbPalette.Location = new System.Drawing.Point(751, 34);
+            this.cmbPalette.Location = new System.Drawing.Point(751, 71);
             this.cmbPalette.Name = "cmbPalette";
             this.cmbPalette.Size = new System.Drawing.Size(128, 21);
             this.cmbPalette.TabIndex = 13;
@@ -170,11 +175,56 @@ namespace NewtonsFractals
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(751, 77);
+            this.label1.Location = new System.Drawing.Point(673, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 19);
             this.label1.TabIndex = 14;
             this.label1.Text = "Фрактал";
+            // 
+            // btnZoomIn
+            // 
+            this.btnZoomIn.Location = new System.Drawing.Point(25, 19);
+            this.btnZoomIn.Name = "btnZoomIn";
+            this.btnZoomIn.Size = new System.Drawing.Size(78, 31);
+            this.btnZoomIn.TabIndex = 15;
+            this.btnZoomIn.Text = "+";
+            this.btnZoomIn.UseVisualStyleBackColor = true;
+            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnZoomOut);
+            this.groupBox1.Controls.Add(this.btnZoomIn);
+            this.groupBox1.Controls.Add(this.btnLeft);
+            this.groupBox1.Controls.Add(this.btnUp);
+            this.groupBox1.Controls.Add(this.btnRight);
+            this.groupBox1.Controls.Add(this.btnDown);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Location = new System.Drawing.Point(673, 420);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(206, 142);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Навигация";
+            // 
+            // btnZoomOut
+            // 
+            this.btnZoomOut.Location = new System.Drawing.Point(109, 19);
+            this.btnZoomOut.Name = "btnZoomOut";
+            this.btnZoomOut.Size = new System.Drawing.Size(78, 31);
+            this.btnZoomOut.TabIndex = 17;
+            this.btnZoomOut.Text = "-";
+            this.btnZoomOut.UseVisualStyleBackColor = true;
+            this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(678, 125);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(201, 116);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Жулиа";
             // 
             // FrmMain
             // 
@@ -182,15 +232,12 @@ namespace NewtonsFractals
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(891, 685);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbPalette);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbFractal);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnDown);
-            this.Controls.Add(this.btnRight);
-            this.Controls.Add(this.btnUp);
-            this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.lblXmax);
             this.Controls.Add(this.lblXmin);
             this.Controls.Add(this.lblYmin);
@@ -202,6 +249,7 @@ namespace NewtonsFractals
             this.Text = "Фракталы Жулиа, Мандельброта, Ньютона";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
@@ -209,9 +257,13 @@ namespace NewtonsFractals
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.Button btnZoomIn;
+        private System.Windows.Forms.Button btnZoomOut;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cmbFractal;
         private System.Windows.Forms.ComboBox cmbPalette;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblXmax;

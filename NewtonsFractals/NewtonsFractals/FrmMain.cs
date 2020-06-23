@@ -31,6 +31,7 @@ namespace NewtonsFractals
         private double _ymin = cYmin;
         private double _ymax = cYmax;
 
+        private int _zoom = 0;
         private bool _blockEventHandler = false;
 
         #endregion
@@ -220,6 +221,8 @@ namespace NewtonsFractals
             _xmax = cXmax;
             _ymin = cYmin;
             _ymax = cYmax;
+
+            _zoom = 0;
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
@@ -239,7 +242,84 @@ namespace NewtonsFractals
             if (_blockEventHandler)
                 return;
 
+            _xmin = cXmin;
+            _xmax = cXmax;
+            _ymin = cYmin;
+            _ymax = cYmax;
+
+            _zoom = 0;
+            
             pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
+        }
+
+        private void btnZoomIn_Click(object sender, EventArgs e)
+        {
+            if (_zoom >= 0)
+            {
+                if (_xmax - _xmin < 0.1 || _ymax - _ymin < 0.1)
+                    return;
+                
+                double dx = (_xmax - _xmin) / cStep;
+                double dy = (_ymax - _ymin) / cStep;
+
+                _xmin += dx;
+                _xmax -= dx;
+                _ymin += dy;
+                _ymax -= dy;
+
+                _zoom++;
+            }
+            else
+            {
+                double xmax = ((cStep + 1) * _xmax + _xmin) / (cStep + 2);
+                double xmin = ((cStep + 1) * _xmin + _xmax) / (cStep + 2);
+                double ymax = ((cStep + 1) * _ymax + _ymin) / (cStep + 2);
+                double ymin = ((cStep + 1) * _ymin + _ymax) / (cStep + 2);
+
+                _xmin = xmin;
+                _xmax = xmax;
+                _ymin = ymin;
+                _ymax = ymax;
+
+                _zoom--;
+            }
+            
+            pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
+        }
+
+        private void btnZoomOut_Click(object sender, EventArgs e)
+        {
+            if (_zoom <= 0)
+            {
+                double dx = (_xmax - _xmin) / cStep;
+                double dy = (_ymax - _ymin) / cStep;
+
+                _xmin -= dx;
+                _xmax += dx;
+                _ymin -= dy;
+                _ymax += dy;
+                
+                _zoom--;
+            }
+            else
+            {
+                double xmax = ((cStep - 1) * _xmax - _xmin) / (cStep - 2);
+                double xmin = ((cStep - 1) * _xmin - _xmax) / (cStep - 2);
+                double ymax = ((cStep - 1) * _ymax - _ymin) / (cStep - 2);
+                double ymin = ((cStep - 1) * _ymin - _ymax) / (cStep - 2);
+
+                _xmin = xmin;
+                _xmax = xmax;
+                _ymin = ymin;
+                _ymax = ymax;
+                
+                _zoom++;
+            }
+            
+            pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
         }
     }
 }
