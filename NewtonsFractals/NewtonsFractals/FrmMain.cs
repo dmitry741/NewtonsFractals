@@ -142,7 +142,7 @@ namespace NewtonsFractals
                 }
                 else
                 {
-                    fractal = new NewtonFractal(3);
+                    fractal = new NewtonFractal((int)cmbRoots.Items[cmbRoots.SelectedIndex]);
                 }
 
                 return fractal;
@@ -177,8 +177,6 @@ namespace NewtonsFractals
             cmbFractal.Items.Add("Ньютон");
             cmbFractal.SelectedIndex = 0;
 
-            _blockEventHandler = false;
-
             double a = -0.2;
             double b = -0.7;
 
@@ -188,6 +186,17 @@ namespace NewtonsFractals
             lblA.Text = string.Format("a={0}", Math.Round(a, 2));
             lblB.Text = string.Format("b={0}", Math.Round(b, 2));
 
+            groupBoxNewton.Location = groupBoxJulia.Location;
+            groupBoxNewton.Visible = false;
+
+            for (int i = 3; i <= 6; i++)
+            {
+                cmbRoots.Items.Add(i);
+            }
+            cmbRoots.SelectedIndex = 0;
+            
+            _blockEventHandler = false;
+            
             _colors = _palettes[0];
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
@@ -266,7 +275,23 @@ namespace NewtonsFractals
             _ymax = cYmax;
 
             _zoom = 0;
-            
+
+            if (cmbFractal.SelectedIndex == 0) // Жулиа
+            {
+                groupBoxJulia.Visible = true;
+                groupBoxNewton.Visible = false;
+            }
+            else if (cmbFractal.SelectedIndex == 1) // Мандельброт 
+            {
+                groupBoxJulia.Visible = false;
+                groupBoxNewton.Visible = false;
+            }
+            else // Ньютон
+            {
+                groupBoxJulia.Visible = false;
+                groupBoxNewton.Visible = true;
+            }
+
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
         }
@@ -358,6 +383,15 @@ namespace NewtonsFractals
             {
                 pictureBox1.Image = UpdateBitmap();
             }
+        }
+
+        private void cmbRoots_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_blockEventHandler)
+                return;
+            
+            pictureBox1.Image = UpdateBitmap();
+            UpdateEdges();
         }
     }
 }

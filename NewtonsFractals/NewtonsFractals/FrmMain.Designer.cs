@@ -46,16 +46,20 @@ namespace NewtonsFractals
             this.btnZoomIn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnZoomOut = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxJulia = new System.Windows.Forms.GroupBox();
             this.lblB = new System.Windows.Forms.Label();
             this.lblA = new System.Windows.Forms.Label();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.groupBoxNewton = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbRoots = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxJulia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.trackBar1)).BeginInit();
+            this.groupBoxNewton.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -224,18 +228,18 @@ namespace NewtonsFractals
             this.btnZoomOut.UseVisualStyleBackColor = true;
             this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
             // 
-            // groupBox2
+            // groupBoxJulia
             // 
-            this.groupBox2.Controls.Add(this.lblB);
-            this.groupBox2.Controls.Add(this.lblA);
-            this.groupBox2.Controls.Add(this.trackBar2);
-            this.groupBox2.Controls.Add(this.trackBar1);
-            this.groupBox2.Location = new System.Drawing.Point(678, 125);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(201, 116);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Жулиа";
+            this.groupBoxJulia.Controls.Add(this.lblB);
+            this.groupBoxJulia.Controls.Add(this.lblA);
+            this.groupBoxJulia.Controls.Add(this.trackBar2);
+            this.groupBoxJulia.Controls.Add(this.trackBar1);
+            this.groupBoxJulia.Location = new System.Drawing.Point(678, 125);
+            this.groupBoxJulia.Name = "groupBoxJulia";
+            this.groupBoxJulia.Size = new System.Drawing.Size(201, 106);
+            this.groupBoxJulia.TabIndex = 17;
+            this.groupBoxJulia.TabStop = false;
+            this.groupBoxJulia.Text = "Жулиа";
             // 
             // lblB
             // 
@@ -273,13 +277,43 @@ namespace NewtonsFractals
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseUp);
             // 
+            // groupBoxNewton
+            // 
+            this.groupBoxNewton.Controls.Add(this.label3);
+            this.groupBoxNewton.Controls.Add(this.cmbRoots);
+            this.groupBoxNewton.Location = new System.Drawing.Point(678, 241);
+            this.groupBoxNewton.Name = "groupBoxNewton";
+            this.groupBoxNewton.Size = new System.Drawing.Size(201, 57);
+            this.groupBoxNewton.TabIndex = 18;
+            this.groupBoxNewton.TabStop = false;
+            this.groupBoxNewton.Text = "Ньютон";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(20, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Число корней:";
+            // 
+            // cmbRoots
+            // 
+            this.cmbRoots.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRoots.FormattingEnabled = true;
+            this.cmbRoots.Location = new System.Drawing.Point(126, 19);
+            this.cmbRoots.Name = "cmbRoots";
+            this.cmbRoots.Size = new System.Drawing.Size(69, 21);
+            this.cmbRoots.TabIndex = 0;
+            this.cmbRoots.SelectedIndexChanged += new System.EventHandler(this.cmbRoots_SelectedIndexChanged);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(891, 685);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxNewton);
+            this.Controls.Add(this.groupBoxJulia);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbPalette);
@@ -297,10 +331,11 @@ namespace NewtonsFractals
             this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxJulia.ResumeLayout(false);
+            this.groupBoxJulia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize) (this.trackBar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.trackBar1)).EndInit();
+            this.groupBoxNewton.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
@@ -313,10 +348,13 @@ namespace NewtonsFractals
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cmbFractal;
         private System.Windows.Forms.ComboBox cmbPalette;
+        private System.Windows.Forms.ComboBox cmbRoots;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxJulia;
+        private System.Windows.Forms.GroupBox groupBoxNewton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblA;
         private System.Windows.Forms.Label lblB;
         private System.Windows.Forms.Label lblXmax;
