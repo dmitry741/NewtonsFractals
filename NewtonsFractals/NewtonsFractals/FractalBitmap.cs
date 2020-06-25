@@ -4,6 +4,9 @@ using System.Drawing;
 
 namespace NewtonsFractals
 {
+    /// <summary>
+    /// Класс получения для получения массива цветов.
+    /// </summary>
     public class FractalBitmap
     {
         public int BitmapWidth { get; set; }
@@ -13,6 +16,13 @@ namespace NewtonsFractals
         public double Ymin { get; set; }
         public double Ymax { get; set; }
 
+        /// <summary>
+        /// Заполнение массива цветов rgbValues.
+        /// </summary>
+        /// <param name="fractal">Объект AbstractDynamicFractal.</param>
+        /// <param name="colors">Палитра (список) цветов.</param>
+        /// <param name="stride">Stride изображения.</param>
+        /// <param name="rgbValues">Массив цветов для заполнения. </param>
         public void GetBitmap(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
             fractal.MaxIterationCount = colors.Count;
