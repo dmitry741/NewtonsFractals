@@ -23,8 +23,12 @@ namespace NewtonsFractals
         /// <param name="colors">Палитра (список) цветов.</param>
         /// <param name="stride">Stride изображения.</param>
         /// <param name="rgbValues">Массив цветов для заполнения. </param>
-        public void GetBitmap(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
+        /// <returns>Время работы в миллисекундах</returns>
+        public int GetBitmap(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
+            System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+            stopWatch.Start();
+            
             fractal.MaxIterationCount = colors.Count;
             Array.Clear(rgbValues, 0, rgbValues.Length);
             
@@ -50,6 +54,10 @@ namespace NewtonsFractals
                     rgbValues[y * stride + x * 3 + 2] = colors[index].R;
                 }
             }
+            
+            stopWatch.Stop();
+
+            return stopWatch.Elapsed.Milliseconds;
         }
     }
 }

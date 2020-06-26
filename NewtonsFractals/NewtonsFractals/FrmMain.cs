@@ -33,6 +33,7 @@ namespace NewtonsFractals
 
         private int _zoom = 0;
         private bool _blockEventHandler = false;
+        private int _timeSpan;
 
         #endregion
         
@@ -104,8 +105,8 @@ namespace NewtonsFractals
                 Ymin = _ymin,
                 Ymax = _ymax
             };
-            
-            fbi.GetBitmap(Fractal, _colors.Colors, stride, _rgbValues);
+
+            _timeSpan = fbi.GetBitmap(Fractal, _colors.Colors, stride, _rgbValues);
 
             System.Runtime.InteropServices.Marshal.Copy(_rgbValues, 0, bmpData.Scan0, bytes);
             _bitmap.UnlockBits(bmpData);
@@ -157,7 +158,9 @@ namespace NewtonsFractals
             if (_bitmap != null)
             {
                 Rectangle rect = new Rectangle(0, 0, _bitmap.Width, _bitmap.Height);
-                System.Drawing.Imaging.BitmapData bmpData = _bitmap.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                System.Drawing.Imaging.BitmapData bmpData = _bitmap.LockBits(rect, 
+                System.Drawing.Imaging.ImageLockMode.ReadWrite, 
+                System.Drawing.Imaging.PixelFormat.Format24bppRgb);
                 int stride = bmpData.Stride;
                 int bytes = Math.Abs(stride) * _bitmap.Height;
                 _rgbValues = new byte[bytes];
