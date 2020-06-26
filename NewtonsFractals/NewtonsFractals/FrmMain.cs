@@ -203,6 +203,7 @@ namespace NewtonsFractals
             _colors = _palettes[0];
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
@@ -213,6 +214,7 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void btnRight_Click(object sender, EventArgs e)
@@ -223,6 +225,7 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -233,6 +236,7 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void btnDown_Click(object sender, EventArgs e)
@@ -243,6 +247,7 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -256,6 +261,7 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void cmbPalette_SelectedIndexChanged(object sender, EventArgs e)
@@ -265,6 +271,7 @@ namespace NewtonsFractals
             
             _colors = _palettes[cmbPalette.SelectedIndex];
             pictureBox1.Image = UpdateBitmap();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void cmbFractal_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,6 +304,7 @@ namespace NewtonsFractals
 
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void btnZoomIn_Click(object sender, EventArgs e)
@@ -333,6 +341,7 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void btnZoomOut_Click(object sender, EventArgs e)
@@ -366,6 +375,7 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
@@ -385,6 +395,7 @@ namespace NewtonsFractals
             if (e.Button == MouseButtons.Left)
             {
                 pictureBox1.Image = UpdateBitmap();
+                lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
             }
         }
 
@@ -395,6 +406,7 @@ namespace NewtonsFractals
             
             pictureBox1.Image = UpdateBitmap();
             UpdateEdges();
+            lblElapsedTime.Text = string.Format("Время построения: {0} мс", _timeSpan);
         }
     }
 }

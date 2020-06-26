@@ -54,6 +54,7 @@ namespace NewtonsFractals
             this.groupBoxNewton = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbRoots = new System.Windows.Forms.ComboBox();
+            this.lblElapsedTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBoxJulia.SuspendLayout();
@@ -236,7 +237,7 @@ namespace NewtonsFractals
             this.groupBoxJulia.Controls.Add(this.trackBar1);
             this.groupBoxJulia.Location = new System.Drawing.Point(678, 125);
             this.groupBoxJulia.Name = "groupBoxJulia";
-            this.groupBoxJulia.Size = new System.Drawing.Size(201, 106);
+            this.groupBoxJulia.Size = new System.Drawing.Size(201, 115);
             this.groupBoxJulia.TabIndex = 17;
             this.groupBoxJulia.TabStop = false;
             this.groupBoxJulia.Text = "Жулиа";
@@ -281,7 +282,7 @@ namespace NewtonsFractals
             // 
             this.groupBoxNewton.Controls.Add(this.label3);
             this.groupBoxNewton.Controls.Add(this.cmbRoots);
-            this.groupBoxNewton.Location = new System.Drawing.Point(678, 241);
+            this.groupBoxNewton.Location = new System.Drawing.Point(678, 264);
             this.groupBoxNewton.Name = "groupBoxNewton";
             this.groupBoxNewton.Size = new System.Drawing.Size(201, 57);
             this.groupBoxNewton.TabIndex = 18;
@@ -306,12 +307,21 @@ namespace NewtonsFractals
             this.cmbRoots.TabIndex = 0;
             this.cmbRoots.SelectedIndexChanged += new System.EventHandler(this.cmbRoots_SelectedIndexChanged);
             // 
+            // lblElapsedTime
+            // 
+            this.lblElapsedTime.Location = new System.Drawing.Point(673, 565);
+            this.lblElapsedTime.Name = "lblElapsedTime";
+            this.lblElapsedTime.Size = new System.Drawing.Size(206, 20);
+            this.lblElapsedTime.TabIndex = 19;
+            this.lblElapsedTime.Text = "label4";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(891, 685);
+            this.Controls.Add(this.lblElapsedTime);
             this.Controls.Add(this.groupBoxNewton);
             this.Controls.Add(this.groupBoxJulia);
             this.Controls.Add(this.groupBox1);
@@ -357,6 +367,7 @@ namespace NewtonsFractals
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblA;
         private System.Windows.Forms.Label lblB;
+        private System.Windows.Forms.Label lblElapsedTime;
         private System.Windows.Forms.Label lblXmax;
         private System.Windows.Forms.Label lblXmin;
         private System.Windows.Forms.Label lblYmax;
