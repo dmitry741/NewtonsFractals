@@ -47,28 +47,21 @@ namespace NewtonsFractals
             }
         }
 
-        private async void GetAll(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
+        private async void GetAllAsync(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
             var t1 = Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                0, BitmapHeight / 4,
+                0, BitmapHeight / 2,
                 rgbValues, colors, stride));
             
             var t2 = Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                BitmapHeight / 4 + 1, BitmapHeight / 2,
+                BitmapHeight / 2 + 1, BitmapHeight - 1,
                 rgbValues, colors, stride));
             
-            var t3 = Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                BitmapWidth / 2 + 1, 3 * BitmapHeight / 4,
-                rgbValues, colors, stride));
-            
-            var t4 = Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                3 * BitmapHeight / 4 + 1, BitmapHeight - 1,
-                rgbValues, colors, stride));
-
             t1.Wait();
             t2.Wait();
-            t3.Wait();
-            t4.Wait();
+
+            await t1;
+            await t2;
         }
 
         /// <summary>
@@ -84,7 +77,7 @@ namespace NewtonsFractals
             Array.Clear(rgbValues, 0, rgbValues.Length);
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
-            GetAll(fractal, colors, stride, rgbValues);
+            GetAllAsync(fractal, colors, stride, rgbValues);
             stopWatch.Stop();
 
             return stopWatch.Elapsed.Seconds * 1000 + stopWatch.Elapsed.Milliseconds;
