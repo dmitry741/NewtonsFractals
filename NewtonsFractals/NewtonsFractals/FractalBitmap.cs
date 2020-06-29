@@ -18,6 +18,21 @@ namespace NewtonsFractals
         public double Ymin { get; set; }
         public double Ymax { get; set; }
 
+        /// <summary>
+        /// Заполнение массива изображения с учетом асинхронности.
+        /// </summary>
+        /// <param name="xmin">Минимальное значение X.</param>
+        /// <param name="xmax">Максимальное значение X.</param>
+        /// <param name="ymin">Минимальное значение Y.</param>
+        /// <param name="ymax">Максимальное значение Y.</param>
+        /// <param name="width">Ширина изображения.</param>
+        /// <param name="height">Высота изображения.</param>
+        /// <param name="fractal">Фрактал.</param>
+        /// <param name="start">Стартовое значение по оси Y.</param>
+        /// <param name="stop">Конечное значение по оси Y.</param>
+        /// <param name="rgbValues">Массив ппикселей для изображения.</param>
+        /// <param name="colors">Список цветов.</param>
+        /// <param name="stride">Stride изображения.</param>
         static void FillArray(double xmin, double xmax, double ymin, double ymax, int width, int height,
             AbstractDynamicFractal fractal, int start, int stop, byte[] rgbValues, List<Color> colors, int stride)
         {
@@ -47,6 +62,13 @@ namespace NewtonsFractals
             }
         }
 
+        /// <summary>
+        /// Асинхронный метод для заполнения пикселей изображения.
+        /// </summary>
+        /// <param name="fractal">Объект AbstractDynamicFractal.</param>
+        /// <param name="colors">Палитра (список) цветов.</param>
+        /// <param name="stride">Stride изображения.</param>
+        /// <param name="rgbValues">Массив цветов для заполнения.</param>
         private async void GetAllAsync(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
             var t1 = Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
@@ -71,7 +93,7 @@ namespace NewtonsFractals
         /// <param name="colors">Палитра (список) цветов.</param>
         /// <param name="stride">Stride изображения.</param>
         /// <param name="rgbValues">Массив цветов для заполнения. </param>
-        /// <returns>Время работы в миллисекундах</returns>
+        /// <returns>Время работы в миллисекундах.</returns>
         public int GetBitmap(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
             Array.Clear(rgbValues, 0, rgbValues.Length);
