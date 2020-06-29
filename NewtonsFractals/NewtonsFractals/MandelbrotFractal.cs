@@ -1,5 +1,8 @@
 ﻿namespace NewtonsFractals
 {
+    /// <summary>
+    ///  Фрактал Мандельброта.
+    /// </summary>
     public class MandelbrotFractal : AbstractDynamicFractal
     {
         protected override Complex NextIteration(Complex z)

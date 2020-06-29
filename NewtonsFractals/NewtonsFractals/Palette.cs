@@ -4,6 +4,9 @@ using System.Drawing;
 
 namespace NewtonsFractals
 {
+    /// <summary>
+    /// Класс представляющий набор цветов для рисования фрактала.
+    /// </summary>
     public class Palette
     {
         private readonly List<Color> _baseColors = new List<Color>();

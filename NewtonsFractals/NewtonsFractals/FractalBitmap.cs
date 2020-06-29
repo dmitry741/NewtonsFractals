@@ -5,7 +5,7 @@ using System.Drawing;
 namespace NewtonsFractals
 {
     /// <summary>
-    /// Класс получения для получения массива цветов.
+    /// Класс для получения массива цветов.
     /// </summary>
     public class FractalBitmap
     {

@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace NewtonsFractals
 {
+    /// <summary>
+    /// Фрактал Ньютона.
+    /// </summary>
     public class NewtonFractal : AbstractDynamicFractal
     {
         private  readonly int _n;
