@@ -57,7 +57,7 @@ namespace NewtonsFractals
             
             stopWatch.Stop();
 
-            return stopWatch.Elapsed.Milliseconds;
+            return stopWatch.Elapsed.Seconds * 1000 + stopWatch.Elapsed.Milliseconds;
         }
     }
 }

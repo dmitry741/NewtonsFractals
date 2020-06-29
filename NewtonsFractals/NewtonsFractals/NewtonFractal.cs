@@ -23,8 +23,9 @@ namespace NewtonsFractals
 
         protected override Complex NextIteration(Complex z)
         {
-            Complex numerator = (_n - 1) * (z^_n) + 1;
-            Complex denominator = _n * (z^(_n - 1));
+            Complex zn1 = z ^ (_n - 1);
+            Complex numerator = (_n - 1) * zn1 * z + 1;
+            Complex denominator = _n * zn1;
 
             return numerator / denominator;
         }
