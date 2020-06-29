@@ -37,5 +37,7 @@ namespace NewtonsFractals
         {
             return _roots.Any(x => (x - z).ModuleInSquare < 0.01);
         }
+        
+        public override AbstractDynamicFractal Copy() { return new NewtonFractal(_n); }
     }
 }

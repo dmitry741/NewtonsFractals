@@ -33,6 +33,8 @@ namespace NewtonsFractals
         /// <returns>True если следует завершить итеративный процесс, False в противоположном случае.</returns>
         protected abstract bool Check(Complex z);
 
+        public abstract AbstractDynamicFractal Copy();
+
         #endregion
 
         /// <summary>

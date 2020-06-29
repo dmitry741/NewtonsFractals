@@ -21,5 +21,7 @@
         {
             return z.ModuleInSquare > 16.0;
         }
+        
+        public override AbstractDynamicFractal Copy() { return new JuliaFractal(_c); }
     }
 }
