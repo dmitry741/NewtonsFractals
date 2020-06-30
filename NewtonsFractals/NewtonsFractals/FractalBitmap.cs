@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NewtonsFractals
 {
     /// <summary>
-    /// Класс для получения массива цветов.
+    /// Класс для заполнения массива пикселей.
     /// </summary>
     public class FractalBitmap
     {
@@ -69,21 +69,21 @@ namespace NewtonsFractals
         /// <param name="colors">Палитра (список) цветов.</param>
         /// <param name="stride">Stride изображения.</param>
         /// <param name="rgbValues">Массив цветов для заполнения.</param>
-        private async void GetAllAsync(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
+        private void GetAllAsync(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
-            var t1 = Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                0, BitmapHeight / 2,
-                rgbValues, colors, stride));
-            
-            var t2 = Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                BitmapHeight / 2 + 1, BitmapHeight - 1,
-                rgbValues, colors, stride));
-            
-            t1.Wait();
-            t2.Wait();
+            var tasks = new List<Task>();
 
-            await t1;
-            await t2;
+            tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
+                 0,
+                 BitmapHeight / 2,
+                rgbValues, colors, stride)));
+            
+            tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
+                BitmapHeight / 2 + 1,
+                BitmapHeight - 1,
+                rgbValues, colors, stride)));
+
+            Task.WaitAll(tasks.ToArray());
         }
 
         /// <summary>
