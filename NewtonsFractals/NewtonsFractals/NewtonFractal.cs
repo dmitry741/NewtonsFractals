@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace NewtonsFractals
 {
+    /// <summary>
+    /// Фрактал Ньютона.
+    /// </summary>
     public class NewtonFractal : AbstractDynamicFractal
     {
         private  readonly int _n;
@@ -23,8 +26,9 @@ namespace NewtonsFractals
 
         protected override Complex NextIteration(Complex z)
         {
-            Complex numerator = (_n - 1) * (z^_n) + 1;
-            Complex denominator = _n * (z^(_n - 1));
+            Complex zn1 = z ^ (_n - 1);
+            Complex numerator = (_n - 1) * zn1 * z + 1;
+            Complex denominator = _n * zn1;
 
             return numerator / denominator;
         }
@@ -33,5 +37,7 @@ namespace NewtonsFractals
         {
             return _roots.Any(x => (x - z).ModuleInSquare < 0.01);
         }
+        
+        public override AbstractDynamicFractal Copy() { return new NewtonFractal(_n); }
     }
 }

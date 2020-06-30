@@ -1,5 +1,8 @@
 ﻿namespace NewtonsFractals
 {
+    /// <summary>
+    /// Фрактал Жулиа.
+    /// </summary>
     public class JuliaFractal : AbstractDynamicFractal
     {
         private readonly Complex _c;
@@ -18,5 +21,7 @@
         {
             return z.ModuleInSquare > 16.0;
         }
+        
+        public override AbstractDynamicFractal Copy() { return new JuliaFractal(_c); }
     }
 }
