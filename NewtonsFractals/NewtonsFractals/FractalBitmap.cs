@@ -75,11 +75,21 @@ namespace NewtonsFractals
 
             tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
                  0,
-                 BitmapHeight / 2,
+                 BitmapHeight / 4,
+                rgbValues, colors, stride)));
+            
+            tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
+                BitmapHeight / 4 + 1,
+                BitmapHeight / 2,
                 rgbValues, colors, stride)));
             
             tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
                 BitmapHeight / 2 + 1,
+                3 * BitmapHeight / 4,
+                rgbValues, colors, stride)));
+            
+            tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
+                3 * BitmapHeight / 4 + 1,
                 BitmapHeight - 1,
                 rgbValues, colors, stride)));
 
