@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -43,18 +44,14 @@ namespace NewtonsFractals
 
             for (int x = 0; x < width; x++)
             {
-                double re = kx * x + xmin;
-                
                 for (int y = start; y <= stop; y++)
                 {
-                    double im = ky * y + ymax;
-                    fractal.Start = new Complex(re, im);
-                    
+                    fractal.Start = new Complex(kx * x + xmin, ky * y + ymax);
                     int index = fractal.GetIteration();
                     
                     if (index < 0)
                         continue;
-                   
+
                     rgbValues[y * stride + x * 3 + 0] = colors[index].B;
                     rgbValues[y * stride + x * 3 + 1] = colors[index].G;
                     rgbValues[y * stride + x * 3 + 2] = colors[index].R;
