@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -43,18 +44,14 @@ namespace NewtonsFractals
 
             for (int x = 0; x < width; x++)
             {
-                double re = kx * x + xmin;
-                
                 for (int y = start; y <= stop; y++)
                 {
-                    double im = ky * y + ymax;
-                    fractal.Start = new Complex(re, im);
-                    
+                    fractal.Start = new Complex(kx * x + xmin, ky * y + ymax);
                     int index = fractal.GetIteration();
                     
                     if (index < 0)
                         continue;
-                   
+
                     rgbValues[y * stride + x * 3 + 0] = colors[index].B;
                     rgbValues[y * stride + x * 3 + 1] = colors[index].G;
                     rgbValues[y * stride + x * 3 + 2] = colors[index].R;
@@ -69,30 +66,20 @@ namespace NewtonsFractals
         /// <param name="colors">Палитра (список) цветов.</param>
         /// <param name="stride">Stride изображения.</param>
         /// <param name="rgbValues">Массив цветов для заполнения.</param>
-        private void GetAllAsync(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
+        private void GetPixels(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
             var tasks = new List<Task>();
 
             tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
                  0,
-                 BitmapHeight / 4,
-                rgbValues, colors, stride)));
-            
-            tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                BitmapHeight / 4 + 1,
-                BitmapHeight / 2,
+                 BitmapHeight / 2,
                 rgbValues, colors, stride)));
             
             tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
                 BitmapHeight / 2 + 1,
-                3 * BitmapHeight / 4,
-                rgbValues, colors, stride)));
-            
-            tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                3 * BitmapHeight / 4 + 1,
                 BitmapHeight - 1,
                 rgbValues, colors, stride)));
-
+            
             Task.WaitAll(tasks.ToArray());
         }
 
@@ -109,7 +96,7 @@ namespace NewtonsFractals
             Array.Clear(rgbValues, 0, rgbValues.Length);
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
-            GetAllAsync(fractal, colors, stride, rgbValues);
+            GetPixels(fractal, colors, stride, rgbValues);
             stopWatch.Stop();
 
             return stopWatch.Elapsed.Seconds * 1000 + stopWatch.Elapsed.Milliseconds;
