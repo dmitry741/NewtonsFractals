@@ -60,7 +60,7 @@ namespace NewtonsFractals
         }
 
         /// <summary>
-        /// Асинхронный метод для заполнения пикселей изображения.
+        /// Многопоточный метод для заполнения пикселей изображения.
         /// </summary>
         /// <param name="fractal">Объект AbstractDynamicFractal.</param>
         /// <param name="colors">Палитра (список) цветов.</param>
