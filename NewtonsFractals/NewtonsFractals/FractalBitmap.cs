@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace NewtonsFractals
@@ -20,7 +18,7 @@ namespace NewtonsFractals
         public double Ymax { get; set; }
 
         /// <summary>
-        /// Заполнение массива изображения с учетом асинхронности.
+        /// Заполнение массива изображения.
         /// </summary>
         /// <param name="xmin">Минимальное значение X.</param>
         /// <param name="xmax">Максимальное значение X.</param>
@@ -48,13 +46,13 @@ namespace NewtonsFractals
                 {
                     fractal.Start = new Complex(kx * x + xmin, ky * y + ymax);
                     int index = fractal.GetIteration();
-                    
-                    if (index < 0)
-                        continue;
 
-                    rgbValues[y * stride + x * 3 + 0] = colors[index].B;
-                    rgbValues[y * stride + x * 3 + 1] = colors[index].G;
-                    rgbValues[y * stride + x * 3 + 2] = colors[index].R;
+                    if (index >= 0)
+                    {
+                        rgbValues[y * stride + x * 3 + 0] = colors[index].B;
+                        rgbValues[y * stride + x * 3 + 1] = colors[index].G;
+                        rgbValues[y * stride + x * 3 + 2] = colors[index].R;
+                    }
                 }
             }
         }
