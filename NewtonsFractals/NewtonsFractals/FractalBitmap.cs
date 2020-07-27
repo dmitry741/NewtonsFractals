@@ -68,18 +68,19 @@ namespace NewtonsFractals
         /// <param name="rgbValues">Массив цветов для заполнения.</param>
         private void GetPixels(AbstractDynamicFractal fractal, List<Color> colors, int stride, byte[] rgbValues)
         {
-            var tasks = new List<Task>();
+            var tasks = new List<Task>
+            {
+                Task.Run(() => FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(),
+                     0,
+                     BitmapHeight / 2,
+                    rgbValues, colors, stride)),
 
-            tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                 0,
-                 BitmapHeight / 2,
-                rgbValues, colors, stride)));
-            
-            tasks.Add(Task.Run(()=>FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(), 
-                BitmapHeight / 2 + 1,
-                BitmapHeight - 1,
-                rgbValues, colors, stride)));
-            
+                Task.Run(() => FillArray(Xmin, Xmax, Ymin, Ymax, BitmapWidth, BitmapHeight, fractal.Copy(),
+                    BitmapHeight / 2 + 1,
+                    BitmapHeight - 1,
+                    rgbValues, colors, stride))
+            };
+
             Task.WaitAll(tasks.ToArray());
         }
 
