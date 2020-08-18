@@ -134,7 +134,7 @@ namespace NewtonsFractals
         {
             get
             {
-                AbstractDynamicFractal fractal = null;
+                AbstractDynamicFractal fractal;
 
                 if (cmbFractal.SelectedIndex == 0)
                 {
@@ -181,7 +181,7 @@ namespace NewtonsFractals
             cmbPalette.Items.Add("Оранжевая");
             cmbPalette.SelectedIndex = 0;
 
-            cmbFractal.Items.Add("Жулиа");
+            cmbFractal.Items.Add("Жюлиа");
             cmbFractal.Items.Add("Мандельброт");
             cmbFractal.Items.Add("Ньютон");
             cmbFractal.SelectedIndex = 0;
