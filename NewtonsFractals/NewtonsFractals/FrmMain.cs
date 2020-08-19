@@ -285,7 +285,7 @@ namespace NewtonsFractals
 
             _zoom = 0;
 
-            if (cmbFractal.SelectedIndex == 0) // Жулиа
+            if (cmbFractal.SelectedIndex == 0) // Жюлиа
             {
                 groupBoxJulia.Visible = true;
                 groupBoxNewton.Visible = false;

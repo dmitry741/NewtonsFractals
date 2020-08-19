@@ -1,7 +1,7 @@
 ﻿namespace NewtonsFractals
 {
     /// <summary>
-    /// Фрактал Жулиа.
+    /// Фрактал Жюлиа.
     /// </summary>
     public class JuliaFractal : AbstractDynamicFractal
     {
