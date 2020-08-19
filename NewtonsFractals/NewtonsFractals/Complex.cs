@@ -48,6 +48,11 @@ namespace NewtonsFractals
             return new Complex(a.Re - b.Re, a.Im - b.Im);
         }
 
+        public static Complex operator -(double a, Complex b)
+        {
+            return new Complex(a - b.Re, 0 - b.Im);
+        }
+
         public static Complex operator *(Complex a, Complex b)
         {
             return new Complex(a.Re * b.Re - a.Im * b.Im, a.Im * b.Re + a.Re * b.Im);

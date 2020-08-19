@@ -147,9 +147,13 @@ namespace NewtonsFractals
                 {
                     fractal = new MandelbrotFractal();
                 }
-                else
+                else if (cmbFractal.SelectedIndex == 2)
                 {
                     fractal = new NewtonFractal((int)cmbRoots.Items[cmbRoots.SelectedIndex]);
+                }
+                else
+                {
+                    fractal = new LinkedSet5Z();
                 }
 
                 return fractal;
@@ -184,6 +188,7 @@ namespace NewtonsFractals
             cmbFractal.Items.Add("Жюлиа");
             cmbFractal.Items.Add("Мандельброт");
             cmbFractal.Items.Add("Ньютон");
+            cmbFractal.Items.Add("(5z-z^3)/3");
             cmbFractal.SelectedIndex = 0;
 
             double a = -0.2;
@@ -285,7 +290,7 @@ namespace NewtonsFractals
 
             _zoom = 0;
 
-            if (cmbFractal.SelectedIndex == 0) // Жулиа
+            if (cmbFractal.SelectedIndex == 0) // Жюлиа
             {
                 groupBoxJulia.Visible = true;
                 groupBoxNewton.Visible = false;
@@ -295,10 +300,15 @@ namespace NewtonsFractals
                 groupBoxJulia.Visible = false;
                 groupBoxNewton.Visible = false;
             }
-            else // Ньютон
+            else if (cmbFractal.SelectedIndex == 2) // Ньютон
             {
                 groupBoxJulia.Visible = false;
                 groupBoxNewton.Visible = true;
+            }
+            else
+            {
+                groupBoxJulia.Visible = false;
+                groupBoxNewton.Visible = false;
             }
 
             UpdateFractal();
