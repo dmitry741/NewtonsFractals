@@ -12,7 +12,7 @@
 
         protected override bool Check(Complex z)
         {
-            return z.ModuleInSquare > 16.0;
+            return z.ModuleInSquare > 4.0;
         }
         
         public override AbstractDynamicFractal Copy() { return new MandelbrotFractal(); }
