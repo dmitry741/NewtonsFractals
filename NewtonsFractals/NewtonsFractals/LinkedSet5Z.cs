@@ -20,7 +20,7 @@ namespace NewtonsFractals
 
         protected override Complex NextIteration(Complex z)
         {
-            return 0.3333 * z * (5.0 - 2 * z * z);
+            return 0.3333 * z * (5.0 - 2 * z * z) + new Complex(0.1, -0.3);
         }
     }
 }
