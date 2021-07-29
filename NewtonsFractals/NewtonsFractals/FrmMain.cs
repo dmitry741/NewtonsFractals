@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 
+/* Урок "Фракталы."
+ * Все уроки на http://digitalmodels.ru
+ * 
+ */
+
 namespace NewtonsFractals
 {
     public partial class FrmMain : Form
