@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 /* Урок "Фракталы."
- * Все уроки на http://digitalmodels.ru
+ * Все уроки на https://digitalmodels.ru
  * 
  */
 
